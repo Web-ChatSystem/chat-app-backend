@@ -1,20 +1,21 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Expose } from "class-transformer";
 
-export class GetMeDto {
+export class PendingRequestDto {
   @Expose()
   @ApiProperty()
-  userId: number;
+  id: string;
 
   @Expose()
   @ApiProperty()
-  email: string;
+  sender: {
+    id: string;
+    email: string;
+    username: string;
+    avatar: string;
+  };
 
   @Expose()
   @ApiProperty()
-  username: string;
-
-  @Expose()
-  @ApiProperty()
-  avatar: string;
+  createdAt: Date;
 }

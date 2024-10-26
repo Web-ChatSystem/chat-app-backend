@@ -1,20 +1,20 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Expose } from "class-transformer";
 
-export class GetMeDto {
-  @Expose()
+export class FriendDto {
   @ApiProperty()
-  userId: number;
+  @Expose()
+  id: string;
 
-  @Expose()
   @ApiProperty()
+  @Expose()
   email: string;
 
-  @Expose()
   @ApiProperty()
-  username: string;
+  @Expose()
+  name: string;
 
-  @Expose()
   @ApiProperty()
+  @Expose()
   avatar: string;
 }

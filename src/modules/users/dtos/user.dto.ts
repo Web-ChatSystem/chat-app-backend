@@ -1,10 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Expose } from "class-transformer";
 
-export class GetMeDto {
+export class UserDto {
   @Expose()
   @ApiProperty()
-  userId: number;
+  id: string;
 
   @Expose()
   @ApiProperty()
@@ -12,7 +12,7 @@ export class GetMeDto {
 
   @Expose()
   @ApiProperty()
-  username: string;
+  name: string;
 
   @Expose()
   @ApiProperty()

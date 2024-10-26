@@ -1,32 +1,48 @@
-import { IsDate, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, IsUrl, MinLength } from "class-validator";
-import { GenderType } from "../enums";
+import {
+  IsDate,
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsUrl,
+  MinLength,
+} from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { Gender } from "@prisma/client";
 
 export class CreateUserDto {
-    @IsEmail()
-    email: string;
+  @IsEmail()
+  @ApiProperty()
+  email: string;
 
-    @IsString()
-    @IsNotEmpty()
-    @MinLength(8)
-    password: string;
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(8)
+  @ApiProperty()
+  password: string;
 
-    @IsString()
-    @IsNotEmpty()
-    username: string;
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  username: string;
 
-    @IsString()
-    @IsNotEmpty()
-    name: string;
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  name: string;
 
-    @IsOptional()
-    @IsUrl()
-    avatar: string;
+  @IsOptional()
+  @IsUrl()
+  @ApiProperty()
+  avatar: string;
 
-    @IsDate()
-    @IsNotEmpty()
-    dob: Date;
+  @IsDate()
+  @IsNotEmpty()
+  dob: Date;
 
-    @IsEnum(GenderType)
-    @IsNotEmpty()
-    gender: GenderType;
-};
+  @IsEnum(Gender)
+  @IsNotEmpty()
+  @ApiProperty()
+  gender: Gender;
+}
