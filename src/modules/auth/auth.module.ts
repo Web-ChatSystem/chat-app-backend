@@ -9,7 +9,7 @@ import { UserModule } from "../users/user.module";
   imports: [
     UserModule,
     JwtModule.register({
-      secret: process.env.SECRET_KEY || "chat-app",
+      secret: "chat-app1",
       signOptions: { expiresIn: "1h" },
     }),
   ],

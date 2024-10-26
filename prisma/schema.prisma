@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
+  url      = "mongodb+srv://mxngocqb:0uDhukgpp5t4izhp@cluster.k7v1c.mongodb.net/chatdb"
 }
 
 enum Gender {
