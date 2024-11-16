@@ -7,6 +7,9 @@ import {
   UserModule,
   ParticipantModule,
   ConversationModule,
+  MessageModule,
+  MessageStatusModule,
+  NicknameModule
 } from "./modules";
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import {
     RelationshipModule,
     RequestModule,
     ConversationModule,
+    MessageModule,
+    MessageStatusModule,
+    NicknameModule
   ],
   controllers: [],
   providers: [PrismaService],
