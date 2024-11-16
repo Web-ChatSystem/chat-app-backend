@@ -13,6 +13,15 @@ import {
 @Controller("conversation")
 export class ConversationController {
   constructor(private conversationService: ConversationService) {}
+  
+  @Get("list")
+  @UseGuards(JwtAuthGuard)
+  async listConversation(
+    @Query("userID") userID: string
+  ): Promise<ISuccessListRespone<ListConversationDto>> {
+    const result = await this.conversationService.listConversation(userID);
+    return arrDataToRespone(ListConversationDto)(result, result.length);
+  }
 
   @Post("create")
   @UseGuards(JwtAuthGuard)
@@ -26,24 +35,6 @@ export class ConversationController {
     return result;
   }
 
-  @Get("list")
-  @UseGuards(JwtAuthGuard)
-  async listConversation(
-    @Query("userID") userID: string
-  ): Promise<ISuccessListRespone<ListConversationDto>> {
-    const result = await this.conversationService.listConversation(userID);
-    return arrDataToRespone(ListConversationDto)(result, result.length);
-  }
-
-  @Get("")
-  @UseGuards(JwtAuthGuard)
-  async getConversation(
-    @Query("id") id: string
-  ): Promise<ISuccessRespone<ListConversationDto>> {
-    const result = await this.conversationService.getConversation(id);
-    return dataToRespone(ListConversationDto)(result);
-  }
-
   @Get("individual")
   @UseGuards(JwtAuthGuard)
   async getIndividualConversation(
@@ -54,5 +45,14 @@ export class ConversationController {
       userID,
       friendID
     );
+  }
+
+  @Get("")
+  @UseGuards(JwtAuthGuard)
+  async getConversation(
+    @Query("id") id: string
+  ): Promise<ISuccessRespone<ListConversationDto>> {
+    const result = await this.conversationService.getConversation(id);
+    return dataToRespone(ListConversationDto)(result);
   }
 }

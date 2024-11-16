@@ -32,6 +32,7 @@ export class ConversationService {
   }
 
   async listConversation(userID: string): Promise<ListConversationDto[]> {
+
     const conversations = await this.prisma.conversation.findMany({
       where: {
         Participant: {
@@ -85,6 +86,44 @@ export class ConversationService {
     return results;
   }
 
+  
+  async getIndividualConversation(userID: string, friendID: string) {
+    const conversation = await this.prisma.conversation.findFirst({
+      where: {
+        type: "individual",
+        Participant: {
+          every: {
+            OR: [
+              {
+                userID: userID,
+              },
+              {
+                userID: friendID,
+              },
+            ],
+          },
+        },
+      },
+      select: {
+        id: true,
+        name: true,
+        type: true,
+        creatorID: true,
+        Participant: {
+          select: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                avatar: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   async getConversation(id: string): Promise<ListConversationDto> {
     const conversation = await this.prisma.conversation.findUnique({
       where: {
@@ -135,40 +174,4 @@ export class ConversationService {
     return results;
   }
 
-  async getIndividualConversation(userID: string, friendID: string) {
-    const conversation = await this.prisma.conversation.findFirst({
-      where: {
-        type: "individual",
-        Participant: {
-          every: {
-            OR: [
-              {
-                userID: userID,
-              },
-              {
-                userID: friendID,
-              },
-            ],
-          },
-        },
-      },
-      select: {
-        id: true,
-        name: true,
-        type: true,
-        creatorID: true,
-        Participant: {
-          select: {
-            user: {
-              select: {
-                id: true,
-                username: true,
-                avatar: true,
-              },
-            },
-          },
-        },
-      },
-    });
-  }
 }
