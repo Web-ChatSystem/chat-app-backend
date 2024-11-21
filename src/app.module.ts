@@ -7,7 +7,12 @@ import {
   UserModule,
   ParticipantModule,
   ConversationModule,
+  MessageModule,
+  MessageStatusModule,
+  NicknameModule,
 } from "./modules";
+import { ChatGateway } from "./chat.gateway";
+
 @Module({
   imports: [
     ParticipantModule,
@@ -16,8 +21,11 @@ import {
     RelationshipModule,
     RequestModule,
     ConversationModule,
+    MessageModule,
+    MessageStatusModule,
+    NicknameModule,
   ],
   controllers: [],
-  providers: [PrismaService],
+  providers: [PrismaService, ChatGateway],
 })
-export class AppModule {}
+export class AppModule { }

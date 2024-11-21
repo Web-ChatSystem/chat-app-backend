@@ -7,6 +7,7 @@ import {
   IsString,
   IsUrl,
   MinLength,
+  IsDateString
 } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { Gender } from "@prisma/client";
@@ -37,7 +38,7 @@ export class CreateUserDto {
   @ApiProperty()
   avatar: string;
 
-  @IsDate()
+  @IsDateString()
   @IsNotEmpty()
   dob: Date;
 
