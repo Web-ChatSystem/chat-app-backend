@@ -4,7 +4,7 @@ import { FriendDto, RelationShipDto, UpdateRelationshipDto } from "./dtos";
 
 @Injectable()
 export class RelationshipService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(data: RelationShipDto) {
     const userRelation = await this.prisma.relationship.findMany({

@@ -12,6 +12,7 @@ import {
   NicknameModule,
 } from "./modules";
 import { ChatGateway } from "./chat.gateway";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ChatGateway } from "./chat.gateway";
     MessageModule,
     MessageStatusModule,
     NicknameModule,
+    JwtModule,
   ],
   controllers: [],
   providers: [PrismaService, ChatGateway],

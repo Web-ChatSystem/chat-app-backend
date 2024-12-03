@@ -12,13 +12,14 @@ import {
 @ApiTags("Conversation")
 @Controller("conversation")
 export class ConversationController {
-  constructor(private conversationService: ConversationService) {}
+  constructor(private conversationService: ConversationService) { }
 
   @Post("create")
   @UseGuards(JwtAuthGuard)
   async createConversation(
     @Body() createConversationDto: CreateConversationDto
   ): Promise<string> {
+    console.log("1 group conversation duoc tao ra", createConversationDto);
     const result = await this.conversationService.createConversation(
       createConversationDto
     );

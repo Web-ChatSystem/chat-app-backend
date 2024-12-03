@@ -20,6 +20,6 @@ async function bootstrap() {
     origin: ["http://localhost:5173"],
   });
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
+  await app.listen(3000, '0.0.0.0');
 }
 bootstrap();

@@ -7,9 +7,9 @@ import { WsException } from "@nestjs/websockets";
 
 @Injectable()
 export class MessageService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
   async getUserFromSocket(socket: Socket) {
-    const user = await this.prisma.user.findUnique({
+    /*const user = await this.prisma.user.findUnique({
       where: {
         id: socket.handshake.query.userID.toString(),
       },
@@ -22,9 +22,9 @@ export class MessageService {
 
     if (!user) {
       throw new WsException("Invalid Credentials");
-    }
+    }*/
 
-    return user;
+    return null;
   }
 
   async getMessages(conversationID: string): Promise<MessageDto[]> {
