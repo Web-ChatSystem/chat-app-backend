@@ -2,10 +2,13 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ValidationPipe } from "@nestjs/common";
+import { IoAdapter } from "@nestjs/platform-socket.io";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix("api");
+
+  app.useWebSocketAdapter(new IoAdapter(app));
 
   const config = new DocumentBuilder()
     .setTitle("Web chat API")
@@ -18,6 +21,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ["http://localhost:5173", "https://chat-app-frontend-v2-9xdq.vercel.app"],
+    credentials: true,
   });
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000, '0.0.0.0');
