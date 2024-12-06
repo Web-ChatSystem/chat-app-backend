@@ -17,7 +17,7 @@ async function bootstrap() {
   SwaggerModule.setup("api", app, document);
 
   app.enableCors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173", "https://chat-app-frontend-v2-9xdq.vercel.app"],
   });
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000, '0.0.0.0');
