@@ -12,7 +12,11 @@ import { Server, Socket } from "socket.io";
 import { Conversation } from "@prisma/client";
 import { ConversationService } from "./modules/conversation/conversation.service";
 
-@WebSocketGateway({ cors: true })
+@WebSocketGateway({
+  cors: {
+    origin: ["http://localhost:5173", "https://chat-app-frontend-v2-9xdq.vercel.app"],
+  },
+})
 export class ChatGateway implements OnGatewayConnection {
   @WebSocketServer()
   server: Server;
