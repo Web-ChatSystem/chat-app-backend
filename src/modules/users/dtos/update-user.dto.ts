@@ -1,4 +1,4 @@
-import { IsDate, IsEnum, IsOptional, IsString, IsUrl } from "class-validator";
+import { IsDate, IsDateString, IsEnum, IsOptional, IsString, IsUrl } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { Gender } from "@prisma/client";
 
@@ -14,7 +14,7 @@ export class UpdateUserDto {
   avatar: string;
 
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   @ApiProperty()
   dob: Date;
 

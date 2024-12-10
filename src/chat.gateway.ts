@@ -14,7 +14,7 @@ import { ConversationService } from "./modules/conversation/conversation.service
 
 @WebSocketGateway({
   cors: {
-    origin: ["http://localhost:4173", "https://chat-app-frontend-v2-9xdq.vercel.app", "https://chat-app-frontend-myn0.onrender.com"],
+    origin: ["http://localhost:4173", "https://chat-app-frontend-v2-9xdq.vercel.app", "https://chat-app-frontend-myn0.onrender.com", "www.hust-cv-thson-20210744-web-app.id.vn"],
   },
 })
 export class ChatGateway implements OnGatewayConnection {
