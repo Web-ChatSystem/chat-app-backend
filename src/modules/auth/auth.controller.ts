@@ -11,7 +11,7 @@ import { dataToRespone } from "src/common/respone/util";
 @ApiTags("auth")
 @Controller("auth")
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Post("register")
   @ApiCreatedResponse({ description: "Register user", type: UserEntity })

@@ -9,7 +9,7 @@ export class AuthService {
   constructor(
     private readonly usersService: UserService,
     private readonly jwtService: JwtService
-  ) {}
+  ) { }
 
   async login(loginDto: LoginDto): Promise<any> {
     const user = await this.usersService.validateUser(
