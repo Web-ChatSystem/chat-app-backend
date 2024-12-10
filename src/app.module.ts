@@ -9,7 +9,11 @@ import {
   ConversationModule,
   MessageModule,
   MessageStatusModule,
+<<<<<<< HEAD
   NicknameModule,
+=======
+  NicknameModule
+>>>>>>> d14d300be87c97b7563ab46901ff3250584f432d
 } from "./modules";
 import { ChatGateway } from "./chat.gateway";
 import { JwtModule } from "@nestjs/jwt";
@@ -24,8 +28,12 @@ import { JwtModule } from "@nestjs/jwt";
     ConversationModule,
     MessageModule,
     MessageStatusModule,
+<<<<<<< HEAD
     NicknameModule,
     JwtModule,
+=======
+    NicknameModule
+>>>>>>> d14d300be87c97b7563ab46901ff3250584f432d
   ],
   controllers: [],
   providers: [PrismaService, ChatGateway],
